@@ -1,0 +1,179 @@
+<gameofthrones>
+	<board height="700" width="700">
+		<houses longSide="80" shortSide="60">
+			<region color="purple" rgb="-7722014" sideOfBoard="bottom" total="2">
+				<house 
+					name="Craster's Keep"
+					number="1"
+					price="100"
+					x="560"
+					y="620"
+					image="purple1.png"
+				></house>	
+				<house 
+					name="Castle Black"
+					number="1"
+					price="100"
+					x="440"
+					y="620"
+				></house>	
+			</region>
+			<region color="blue" rgb="-7876885" sideOfBoard="bottom" total="3">
+				<house 
+					name="blue1"
+					number="1"
+					price="200"
+					x="260"
+					y="620"
+				></house>	
+				<house 
+					name="blue2"
+					number="2"
+					price="200"
+					x="140"
+					y="620"
+				></house>	
+				<house 
+					name="blue3"
+					number="3"
+					price="200"
+					x="80"
+					y="620"
+				></house>
+			</region>
+			<region color="pink" rgb="-4565549" sideOfBoard="left" total="3">
+					<house 
+						name="pink1"
+						number="1"
+						price="300"
+						x="0"
+						y="560"
+					></house>	
+					<house 
+						name="pink2"
+						number="2"
+						price="300"
+						x="0"
+						y="440"
+					></house>	
+					<house 
+						name="pink3"
+						number="3"
+						price="300"
+						x="0"
+						y="380"
+					></house>
+			</region>
+			<region color="orange" rgb="-16032864" sideOfBoard="left" total="3">
+					<house 
+						name="orange1"
+						number="1"
+						price="400"
+						x="0"
+						y="80"
+					></house>	
+					<house 
+						name="orange2"
+						number="2"
+						price="400"
+						x="0"
+						y="140"
+					></house>	
+					<house 
+						name="orange3"
+						number="3"
+						price="400"
+						x="0"
+						y="260"
+					></house>
+			</region>
+			<region color="red" rgb="-2354116" sideOfBoard="top" total="3">
+					<house 
+						name="red1"
+						number="1"
+						price="500"
+						x="80"
+						y="0"
+					></house>	
+					<house 
+						name="red2"
+						number="2"
+						price="500"
+						x="200"
+						y="0"
+					></house>
+					<house 
+						name="red3"
+						number="3"
+						price="500"
+						x="260"
+						y="0"
+					></house>
+				</region>
+			<region color="yellow" rgb="-10496" sideOfBoard="top" total="3">
+					<house 
+						name="yellow1"
+						number="1"
+						price="600"
+						x="380"
+						y="0"
+					></house>	
+					<house 
+						name="yellow2"
+						number="2"
+						price="600"
+						x="440"
+						y="0"
+					></house>	
+					<house 
+						name="yellow3"
+						number="3"
+						price="600"
+						x="560"
+						y="0"
+					></house>	
+				</region>
+			<region color="green" rgb="-9728477" sideOfBoard="right" total="3">
+					<house 
+						name="green1"
+						number="1"
+						price="700"
+						x="620"
+						y="80"
+					></house>	
+					<house 
+						name="green2"
+						number="2"
+						price="700"
+						x="620"
+						y="140"
+					></house>	
+					<house 
+						name="green3"
+						number="3"
+						price="700"
+						x="620"
+						y="260"
+					></house>	
+				</region>
+			<region color="navy" rgb="-16744320" sideOfBoard="right" total="2">
+					<house 
+						name="navy1"
+						number="1"
+						price="800"
+						x="620"
+						y="440"
+					></house>	
+					<house 
+						name="King's Landing"
+						number="2"
+						price="800"
+						x="620"
+						y="560"
+					></house>	
+				</region>
+		</houses>
+	</board>
+</gameofthrones>
+
+<!-- To get color, (16777216_BASE10 - COLOR_BASE16) = rgb -->
