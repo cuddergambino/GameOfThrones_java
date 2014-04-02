@@ -23,12 +23,13 @@ abstract public class Character extends JButton{
 	
 	PlayerHouse myHouse;
 	Image sigils[] = new Image[3];
-	ImageIcon characterImage, characterFace;
+	Image characterImage, characterFace;
 	String fullImageFile, faceImageFile;
 	
 	public Character(Configuration configuration, String name){
 		super(name);
 		config = configuration;
+		
 	}
 	
 	
@@ -48,7 +49,7 @@ abstract public class Character extends JButton{
 		characterImage = config.getScaledImage(cImage, config.fullCharacterImageWidth, config.fullCharacterImageHeight);
 		characterFace = config.getScaledImage(cFace, config.characterFaceImageSideLength, config.characterFaceImageSideLength);
 		
-		this.setIcon(characterImage);
+		this.setIcon(new ImageIcon(characterImage));
 		this.setVerticalTextPosition(BOTTOM);
 		this.setHorizontalTextPosition(CENTER);
 		

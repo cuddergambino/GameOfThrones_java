@@ -2,11 +2,9 @@ import java.awt.Image;
 
 
 
-public class House extends Space{
+public class SpaceHouse extends Space{
 	enum State{Independent, PaidOff, Sworn, United}
 	
-	
-	String name;
 	String imageName;
 	int number;
 	int price;
@@ -17,9 +15,8 @@ public class House extends Space{
 	int backgroundx, backgroundy, backgroundCenter;
 	int sigilx, sigily;
 	
-	public House(Configuration configuration, String houseName, int houseNumber, int housePrice, int x, int y, int width, int height){
-		super(configuration, x, y, width, height);
-		name = houseName;
+	public SpaceHouse(Configuration configuration, String houseName, int houseNumber, int housePrice, int x, int y, int width, int height){
+		super(configuration, houseName, x, y, width, height);
 		number = houseNumber;
 		price = housePrice;
 		state = State.Independent;
@@ -37,6 +34,10 @@ public class House extends Space{
 			return ally.character.sigils[2];
 		}
 		return null;
+	}
+	
+	public void setBounds(){
+		spacePanel.setBounds(backgroundx+1, backgroundy+1, config.spaceBackgroundSideLength-1, config.spaceBackgroundSideLength-1);
 	}
 	
 	

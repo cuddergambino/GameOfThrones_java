@@ -47,7 +47,7 @@ public class Window_SelectCharacter extends JFrame{
 							if(characters[i].myHouse == c.myHouse)
 								characters[i].setEnabled(false);
 						}
-						config.players[currentPlayerNumber-1] = new Player(c);
+						config.players[currentPlayerNumber-1] = new Player(config, c);
 						if(config.numPlayers == currentPlayerNumber++){
 							Window_SelectCharacter.this.setVisible(false);
 							Window_SelectCharacter.this.dispose();

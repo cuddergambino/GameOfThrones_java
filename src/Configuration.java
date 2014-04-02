@@ -43,9 +43,13 @@ class Configuration {
 			new TheonGreyjoy(this),
 			
 	};
-	Region[] regions;
-	Space[] nonHouseSpaces;
+	Region[] regions;		// contains Houses
+	SpaceCorner cornerSpaces[];
+	SpaceCardDrawing[] cardDrawingSpaces;
+	Space[] spaces;
 	GameBoard board;
+	
+	int numberOfTurns = 0;
 	
 	// Data gathered from user input
 	
@@ -54,7 +58,7 @@ class Configuration {
 	
 	public Configuration(String filename) throws ParserConfigurationException, SAXException, IOException{
 		loadXML(filename);
-		
+		orderSpaces();
 	}
 
 	void setNumberOfPlayers(int num){
@@ -69,6 +73,8 @@ class Configuration {
 		doc = db.parse(file);
 		doc.getDocumentElement().normalize();
 		
+		// Region and Houses
+		//*********************************
 		NodeList regionList = doc.getElementsByTagName("region");
 		regions = new Region[regionList.getLength()];
 		for(int i = 0; i < regionList.getLength(); i++){
@@ -101,25 +107,74 @@ class Configuration {
 				}
 			}
 		}
+		
+		// Corner Spaces
+		//*********************************
+		NodeList cornerList = doc.getElementsByTagName("corner");
+		cornerSpaces = new SpaceCorner[cornerList.getLength()];
+		for(int i = 0; i < cornerList.getLength(); i++){
+			Node cornerNode = cornerList.item(i);
+			if(cornerNode.getNodeType() == Node.ELEMENT_NODE){
+				Element cornerElement = (Element) cornerNode;
+				
+				String name = cornerElement.getAttribute("name");
+				int x = Integer.valueOf( cornerElement.getAttribute("x") );
+				int y = Integer.valueOf( cornerElement.getAttribute("y") );
+				
+				cornerSpaces[i] = new SpaceCorner(this, name, x, y);
+			}
+		}
+		
+		// Card Drawing Spaces
+		//*********************************
+		NodeList cardDrawingList = doc.getElementsByTagName("battle");
+		cardDrawingSpaces = new SpaceCardDrawing[cardDrawingList.getLength()];
+		for(int i = 0; i < cardDrawingList.getLength(); i++){
+			Node cardDrawingNode = cardDrawingList.item(i);
+			if(cardDrawingNode.getNodeType() == Node.ELEMENT_NODE){
+				Element cardDrawingElement = (Element) cardDrawingNode;
+
+				String name = cardDrawingElement.getAttribute("name");
+				int x = Integer.valueOf( cardDrawingElement.getAttribute("x") );
+				int y = Integer.valueOf( cardDrawingElement.getAttribute("y") );
+
+				cardDrawingSpaces[i] = new SpaceCardDrawing(this, name, x, y);
+			}
+		}
+
+	}
+	
+	private void orderSpaces(){
+		
 	}
 	
 	public GameBoard createBoard(){
+		// Set character images to small icons to display on board
+		for(int i = 0; i < players.length; i++){
+			Character c = players[i].character;
+			c.setText("");
+			c.setIcon(new ImageIcon(c.characterFace));
+			c.setFocusable(false);
+			c.setBorderPainted(false);
+			c.setEnabled(true);
+		}
+		
 		board = new GameBoard(this);
 		return board;
 	}
 	
-	public ImageIcon getScaledImage(Image img, int newWidth, int newHeight){
+	public Image getScaledImage(Image img, int newWidth, int newHeight){
 		BufferedImage bi = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
 		Graphics g = bi.createGraphics();
 		g.drawImage(img, 0, 0, newWidth, newHeight, null);
-		return new ImageIcon(bi);
+		return bi;
 	}
 	
-	public ImageIcon getScaledImage(ImageIcon srcImg, int newWidth, int newHeight){
+	public Image getScaledImage(ImageIcon srcImg, int newWidth, int newHeight){
 		Image img = srcImg.getImage();
 		BufferedImage bi = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
 		Graphics g = bi.createGraphics();
 		g.drawImage(img, 0, 0, newWidth, newHeight, null);
-		return new ImageIcon(bi);
+		return bi;
 	}
 }
